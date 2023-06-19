@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import "./Navbar.scss";
 import wishlist from "../../assets/wishlist.svg";
 import shop from "../../assets/shop.svg";
@@ -10,9 +10,7 @@ const Navigation = () => {
 
   const handleOptionChange = (
     category: string,
-    event: {
-      target: { value: SetStateAction<string> };
-    }
+    event: { target: { value: string } }
   ) => {
     setSelectedOption((prevSelectedOption) => ({
       ...prevSelectedOption,
@@ -24,7 +22,7 @@ const Navigation = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleList = (category: SetStateAction<string>) => {
+  const toggleList = (category: string) => {
     setActiveCategory(category === activeCategory ? "" : category);
   };
 
@@ -48,10 +46,11 @@ const Navigation = () => {
       <h1 className="logo">STORE</h1>
       <div className={`menu ${isOpen ? "open" : ""}`}>
         <button className="burger" onClick={toggleMenu}>
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
+          <div className="line" />
+          <div className="line" />
+          <div className="line" />
         </button>
+
         <ul className="menu-options">
           {categories.map((category, index) => (
             <li key={index}>
@@ -62,9 +61,7 @@ const Navigation = () => {
                   }`}
                   onClick={() => toggleList(category.name)}
                 >
-                  {selectedOption[category.name]
-                    ? selectedOption[category.name]
-                    : category.name}
+                  {selectedOption[category.name] || category.name}
                 </button>
                 {category.name === activeCategory && (
                   <ul className="options">
@@ -86,19 +83,18 @@ const Navigation = () => {
             </li>
           ))}
         </ul>
-
-        <div className="right-nav">
-          <form>
-            <input
-              type="search"
-              id="search-input"
-              name="search"
-              placeholder="Search"
-            />
-          </form>
-          <img src={wishlist} alt={wishlist} />
-          <img src={shop} alt={shop} />
-        </div>
+      </div>
+      <div className="right-nav">
+        <form>
+          <input
+            type="search"
+            id="search-input"
+            name="search"
+            placeholder="Search"
+          />
+        </form>
+        <img src={wishlist} alt="wishlist" />
+        <img src={shop} alt="shop" />
       </div>
     </nav>
   );
