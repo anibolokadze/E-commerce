@@ -9,4 +9,18 @@
 }
 button{
     all: unset;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+}
+
+input{
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+h1 {
+    cursor: pointer;
 }

@@ -4,10 +4,6 @@ nav {
   justify-content: space-around;
   align-items: center;
 
-  h1 {
-    cursor: pointer;
-  }
-
   .menu {
     display: flex;
     align-items: center;
@@ -20,13 +16,11 @@ nav {
 
     ul {
       display: flex;
-
       li {
         margin-left: 15px;
         position: relative;
         cursor: pointer;
         padding-bottom: 5px;
-
         &::after {
           content: '';
           position: absolute;
@@ -37,7 +31,6 @@ nav {
           background-color: transparent;
           transition: background-color 0.3s ease-in-out;
         }
-
         &:hover::after {
           background-color: #515151;
         }
@@ -50,13 +43,8 @@ nav {
   }
 
   .select-button {
-    all: unset;
-    cursor: pointer;
     padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     width: 100px;
-    text-align: center;
   }
 
   .options {
@@ -65,19 +53,16 @@ nav {
     left: 0;
     background-color: #fff;
     padding: 10px;
-    border-radius: 4px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     width: 150px;
-  }
-
-  .options li {
-    padding: 5px;
-    transition: background-color 0.3s ease-in-out;
-
-    &:hover {
-      background-color: #f1f1f1;
+    li {
+      padding: 5px;
+      transition: background-color 0.3s ease-in-out;
+      &:hover {
+        background-color: #f1f1f1;
+      }
     }
   }
 
@@ -94,10 +79,8 @@ nav {
     justify-content: space-between;
     width: 25px;
     height: 20px;
-    cursor: pointer;
     margin-left: 15px;
     visibility: hidden;
-
     .line {
       width: 100%;
       height: 2px;
@@ -110,11 +93,7 @@ nav {
     background-position: left;
     background-repeat: no-repeat;
     background-size: 20px;
-    outline: none;
-    border: none;
-    border-radius: 5px;
     padding: 10px 20px;
-    cursor: pointer;
 
     &:focus,
     &:hover {
@@ -124,32 +103,26 @@ nav {
 
   img {
     width: 30px;
-
     &:hover {
       opacity: 0.6;
-      cursor: pointer;
     }
-
     &:first-child {
       margin-right: 50px;
     }
   }
 
   @media (max-width: 1000px) {
-    
     .menu {
       position: absolute;
       top: 29px;
       left: 30px;
       height: 340px;
-      
       ul {
         display: none;
         flex-direction: column;
         align-items: flex-start;
         font-size: small;
       }
-
       &.open {
         background: white;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -161,18 +134,15 @@ nav {
           row-gap: 50px;
           padding: 40px 0px;
           align-items: center;
-
-          li{
+          li {
             margin: 0 auto !important;
             width: 50%;
             text-align: center;
           }
         }
       }
-
       flex-direction: column;
       align-items: flex-start;
-
       .burger {
         visibility: visible;
         margin: 0;
@@ -184,34 +154,27 @@ nav {
     h1 {
       font-size: 16px;
     }
-
     img {
       width: 20px;
     }
-
     nav {
       padding: 20px 0;
-
     }
-
     .right-nav {
       margin-left: 5px !important;
       input {
         width: 20px;
       }
     }
-
     .line {
       width: 50% !important;
       height: 2px;
       background-color: #515151;
     }
-
     .expanded-search {
       display: flex;
       align-items: center;
     }
-  
     .expanded-search input {
       width: 80px;
     }
