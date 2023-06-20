@@ -152,12 +152,13 @@ nav {
         width: 50%;
         background: white;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-        
-        ul {
+       
+        ul.menu-options {
           display: flex;
           z-index: 10;
           row-gap: 50px;
           padding: 40px 0px;
+          margin: 0 auto !important;
         }
       }
 
