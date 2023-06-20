@@ -1,7 +1,7 @@
 nav {
-  padding: 20px 50px;
+  padding: 20px 80px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 
   h1 {
@@ -55,7 +55,7 @@ nav {
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 70px;
+    width: 100px;
     text-align: center;
   }
 
@@ -114,6 +114,7 @@ nav {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
+    cursor: pointer;
 
     &:focus,
     &:hover {
@@ -135,6 +136,7 @@ nav {
   }
 
   @media (max-width: 1000px) {
+    
     .menu {
       position: absolute;
       top: 29px;
@@ -149,16 +151,22 @@ nav {
       }
 
       &.open {
-        width: 50%;
         background: white;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-       
-        ul.menu-options {
+        width: -webkit-fill-available;
+        ul {
+          width: 100%;
           display: flex;
           z-index: 10;
           row-gap: 50px;
           padding: 40px 0px;
-          margin: 0 auto !important;
+          align-items: center;
+
+          li{
+            margin: 0 auto !important;
+            width: 50%;
+            text-align: center;
+          }
         }
       }
 
@@ -171,25 +179,41 @@ nav {
       }
     }
   }
-}
 
-@media (max-width: 570px) {
-  h1 {
-    font-size: 16px;
-  }
+  @media (max-width: 570px) {
+    h1 {
+      font-size: 16px;
+    }
 
-  nav {
+    img {
+      width: 20px;
+    }
+
+    nav {
+      padding: 20px 0;
+
+    }
+
+    .right-nav {
+      margin-left: 5px !important;
+      input {
+        width: 20px;
+      }
+    }
+
     .line {
       width: 50% !important;
       height: 2px;
       background-color: #515151;
     }
-    img {
-      width: 25px;
-    }
 
-    input {
-      width: 5px;
+    .expanded-search {
+      display: flex;
+      align-items: center;
+    }
+  
+    .expanded-search input {
+      width: 80px;
     }
   }
 }

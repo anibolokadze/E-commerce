@@ -4,17 +4,16 @@ import wishlist from "../../assets/wishlist.svg";
 import shop from "../../assets/shop.svg";
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState({});
-  const [activeCategory, setActiveCategory] = useState("");
+  const [isOpen, setIsOpen] = useState(false); // Menu toggle state
+  const [selectedOption, setSelectedOption] = useState({}); // Selected options in dropdowns
+  const [activeCategory, setActiveCategory] = useState(""); // Active category in menu
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false); // Expand search input state
 
-  const handleOptionChange = (
-    category: string,
-    event: { target: { value: string } }
-  ) => {
+  const handleOptionChange = (category: string, event: { target: any }) => {
+    const { value } = event.target;
     setSelectedOption((prevSelectedOption) => ({
       ...prevSelectedOption,
-      [category]: event.target.value,
+      [category]: value,
     }));
   };
 
@@ -23,7 +22,13 @@ const Navigation = () => {
   };
 
   const toggleList = (category: string) => {
-    setActiveCategory(category === activeCategory ? "" : category);
+    setActiveCategory((prevCategory) =>
+      prevCategory === category ? "" : category
+    );
+  };
+
+  const handleSearchIconClick = () => {
+    setIsSearchExpanded(true);
   };
 
   const categories = [
@@ -44,6 +49,8 @@ const Navigation = () => {
   return (
     <nav>
       <h1 className="logo">STORE</h1>
+
+      {/* Menu */}
       <div className={`menu ${isOpen ? "open" : ""}`}>
         <button className="burger" onClick={toggleMenu}>
           <div className="line" />
@@ -84,15 +91,25 @@ const Navigation = () => {
           ))}
         </ul>
       </div>
+
+      {/* Right side navigation */}
       <div className="right-nav">
         <form>
-          <input
-            type="search"
-            id="search-input"
-            name="search"
-            placeholder="Search"
-          />
+          <div
+            className={`input-container ${
+              isSearchExpanded ? "expanded-search" : ""
+            }`}
+          >
+            <input
+              onClick={handleSearchIconClick}
+              type="search"
+              id="search-input"
+              name="search"
+              placeholder="Search"
+            />
+          </div>
         </form>
+
         <img src={wishlist} alt="wishlist" />
         <img src={shop} alt="shop" />
       </div>
