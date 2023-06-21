@@ -1,13 +1,15 @@
-.wrapper{
+.wrapper {
     position: relative;
-    img{
-        width: 100%;
-        cursor: auto;
+    img {
+      width: 100%;
+      cursor: auto;
     }
-    button{
-        position: absolute;
-        top: 40%;
-        left: 30%;
+  
+    button {
+      position: absolute;
+      z-index: 5;
+      top: 40%;
+      left: 30%;
     }
-}
-
+  }
+  

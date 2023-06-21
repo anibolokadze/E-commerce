@@ -20,7 +20,9 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Slider images={images} />
+      <div>
+        <Slider images={images} />
+      </div>
     </>
   );
 };
