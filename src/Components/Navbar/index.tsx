@@ -4,11 +4,19 @@ import wishlist from "../../assets/wishlist.svg";
 import shop from "../../assets/shop.svg";
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false); // Menu toggle state
-  const [selectedOption, setSelectedOption] = useState({}); // Selected options in dropdowns
-  const [activeCategory, setActiveCategory] = useState(""); // Active category in menu
-  const [isSearchExpanded, setIsSearchExpanded] = useState(false); // Expand search input state
+  // Menu toggle state
+  const [isOpen, setIsOpen] = useState(false);
 
+  // Selected options in dropdowns
+  const [selectedOption, setSelectedOption] = useState({});
+
+  // Active category in menu
+  const [activeCategory, setActiveCategory] = useState("");
+
+  // Expand search input state
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+
+  // Handle option change in dropdowns
   const handleOptionChange = (category: string, event: { target: any }) => {
     const { value } = event.target;
     setSelectedOption((prevSelectedOption) => ({
@@ -17,16 +25,19 @@ const Navigation = () => {
     }));
   };
 
+  // Toggle the menu open/close state
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // Toggle the active category in the menu
   const toggleList = (category: string) => {
     setActiveCategory((prevCategory) =>
       prevCategory === category ? "" : category
     );
   };
 
+  // Handle search icon click to expand search input
   const handleSearchIconClick = () => {
     setIsSearchExpanded(true);
   };
