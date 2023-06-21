@@ -3,8 +3,20 @@ import Navbar from "./Components/Navbar";
 import Slider from "./Components/Slider";
 import sliderImage1 from "./assets/slider1 (1).jpg";
 import sliderImage2 from "./assets/slider1 (2).jpg";
+
 const App = () => {
-  const images = [sliderImage1, sliderImage2];
+  const images = [
+    {
+      img: sliderImage1,
+      buttonText: "Btn 1",
+      pText: "New Collection",
+    },
+    {
+      img: sliderImage2,
+      buttonText: "Btn 2",
+      pText: "Old Collection",
+    },
+  ];
   return (
     <>
       <Navbar />

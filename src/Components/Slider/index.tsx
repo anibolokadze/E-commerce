@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import "./Slider.scss";
 
 interface SliderProps {
-  images: string[];
+  images: { img: string; buttonText: string; pText: string }[];
 }
 
 const Slider: React.FC<SliderProps> = ({ images }) => {
@@ -22,7 +23,12 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
   return (
     <div className="image-slider">
       <button onClick={goToPrevSlide}>Prev</button>
-      <img src={images[currentIndex]} alt="Slider" style={{ width: "100%" }} />
+      <div className="wrapper">
+        <button>{images[currentIndex].buttonText}</button>
+        <img src={images[currentIndex].img} alt="Slider" />
+        <p>{images[currentIndex].pText}</p>
+      </div>
+
       <button onClick={goToNextSlide}>Next</button>
     </div>
   );
