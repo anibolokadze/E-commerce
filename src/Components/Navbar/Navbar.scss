@@ -1,7 +1,7 @@
 nav {
   padding: 20px 80px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   .menu {
@@ -115,7 +115,7 @@ nav {
     .menu {
       position: absolute;
       top: 29px;
-      left: 30px;
+      left: 0px;
       height: 340px;
       ul {
         display: none;
@@ -145,7 +145,7 @@ nav {
       align-items: flex-start;
       .burger {
         visibility: visible;
-        margin: 0;
+        margin-left: 30px;
       }
     }
   }
