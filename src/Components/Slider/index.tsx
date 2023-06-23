@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import arrowLeft from "../../assets/arrow-left.png";
+import arrowRight from "../../assets/arrow-right.png";
 import "./Slider.scss";
 
 interface SliderProps {
@@ -22,14 +24,18 @@ const Slider: React.FC<SliderProps> = ({ images }) => {
 
   return (
     <div className="image-slider">
-      <button onClick={goToPrevSlide}>Prev</button>
+      <button onClick={goToPrevSlide} className="arrowLeft">
+        <img src={arrowLeft} alt={arrowLeft} />
+      </button>
       <div className="wrapper">
         <button>{images[currentIndex].buttonText}</button>
         <img src={images[currentIndex].img} alt="Slider" />
         <p>{images[currentIndex].pText}</p>
       </div>
 
-      <button onClick={goToNextSlide}>Next</button>
+      <button onClick={goToNextSlide} className="arrowRight">
+        <img src={arrowRight} alt={arrowRight} />
+      </button>
     </div>
   );
 };

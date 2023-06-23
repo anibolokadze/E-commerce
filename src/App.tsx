@@ -1,10 +1,11 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Slider from "./Components/Slider";
-import sliderImage1 from "./assets/slider1 (1).jpg";
-import sliderImage2 from "./assets/slider1 (2).jpg";
+import sliderImage1 from "./assets/slider (1).jpg";
+import sliderImage2 from "./assets/slider (2).jpg";
 
 const App = () => {
+  // Slider images
   const images = [
     {
       img: sliderImage1,
@@ -20,9 +21,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div>
-        <Slider images={images} />
-      </div>
+      <Slider images={images} />
     </>
   );
 };
