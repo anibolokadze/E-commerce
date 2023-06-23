@@ -6,22 +6,29 @@ import sliderImage2 from "./assets/slider (2).jpg";
 
 const App = () => {
   // Slider images
-  const images = [
+  const slides = [
     {
       img: sliderImage1,
-      buttonText: "Btn 1",
-      pText: "New Collection",
+      buttonText: "SHOP NOW",
+      buttonColors: {
+        default: "#F08080",
+        hover: "#FFC1C1",
+      },
     },
     {
       img: sliderImage2,
-      buttonText: "Btn 2",
-      pText: "Old Collection",
+      buttonText: "SHOP NOW",
+      buttonColors: {
+        default: "#CF8FCC",
+        hover: "#E7C3E5",
+      },
     },
   ];
+
   return (
     <>
       <Navbar />
-      <Slider images={images} />
+      <Slider slides={slides} />
     </>
   );
 };
