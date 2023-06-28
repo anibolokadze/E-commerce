@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Slider from "./Components/Slider";
+import PopularProducts from "./Components/PopularProducts/index";
 import sliderImage1 from "./assets/slider (1).jpg";
 import sliderImage2 from "./assets/slider (2).jpg";
 
@@ -29,6 +30,7 @@ const App = () => {
     <>
       <Navbar />
       <Slider slides={slides} />
+      <PopularProducts />
     </>
   );
 };
