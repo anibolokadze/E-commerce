@@ -26,21 +26,3 @@ export const fetchPopularProducts = async (): Promise<AxiosResponse> => {
 
 
 
-// import axios, { AxiosResponse } from 'axios';
-
-// interface Product {
-//   id: number;
-//   title: string;
-//   // Add other properties of the product if available in the API response
-// }
-
-// export const fetchProducts = async (): Promise<AxiosResponse<Product[]>> => {
-//   try {
-//     const response = await axios.get<Product[]>('https://fakestoreapi.com/products');
-//     const filteredProducts = response.data.filter((product) => product.category !== 'electronics');
-//     return { ...response, data: filteredProducts };
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// };
-
