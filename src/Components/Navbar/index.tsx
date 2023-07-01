@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Navbar.scss";
 import wishlist from "../../assets/wishlist.svg";
 import shop from "../../assets/shop.svg";
+import close from "../../assets/close.png";
 
 const Navigation = () => {
   // Menu toggle state
@@ -23,6 +24,7 @@ const Navigation = () => {
       ...prevSelectedOption,
       [category]: value,
     }));
+    setActiveCategory("");
   };
 
   // Toggle the menu open/close state
@@ -63,10 +65,19 @@ const Navigation = () => {
 
       {/* Menu */}
       <div className={`menu ${isOpen ? "open" : ""}`}>
-        <button className="burger" onClick={toggleMenu}>
-          <div className="line" />
-          <div className="line" />
-          <div className="line" />
+        <button
+          className={`burger ${isOpen ? "open" : ""}`}
+          onClick={toggleMenu}
+        >
+          {isOpen ? (
+            <img src={close} alt={close} className="close" />
+          ) : (
+            <>
+              <div className="line" />
+              <div className="line" />
+              <div className="line" />
+            </>
+          )}
         </button>
 
         <ul className="menu-options">
