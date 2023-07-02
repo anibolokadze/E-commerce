@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { fetchPopularProducts, PopularProduct } from "../../api";
 import eye from "../../assets/icons8-eye-30.png";
 import star from "../../assets/glowing-star.png";
-import "./PopularProducts.scss";
+import "./index.scss";
 
 const PopularProductList: React.FC = () => {
   const [popularProducts, setPopularProducts] = useState<PopularProduct[]>([]);
@@ -59,7 +59,9 @@ const PopularProductList: React.FC = () => {
       }}
       transition={{ duration: 0.2, ease: "easeIn" }}
     >
-      <h1>Popular Products</h1>
+      <h1>
+        <mark>POPULAR PRODUCTS</mark>
+      </h1>
       <ul>
         {popularProducts.map((product) => (
           <li key={product.title}>

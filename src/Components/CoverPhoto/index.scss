@@ -1,0 +1,13 @@
+.image-slider {
+  position: relative;
+  object-fit: contain;
+
+  .wrapper {
+    background-image: url("../../assets/main\ image.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%; 
+    height: 100vh;
+  }
+}
