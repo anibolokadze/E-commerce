@@ -13,7 +13,7 @@ const App = () => {
     const timer = setTimeout(() => {
       setShowPopup(true);
       console.log("Popup shown!"); // Log the message when the popup is shown
-    }, 5000);
+    }, 8000);
 
     return () => {
       clearTimeout(timer);
@@ -29,9 +29,7 @@ const App = () => {
       <Navbar />
       <CoverPhoto />
       <PopularProducts />
-      {showPopup && (
-        <Popup message="Welcome back!" onClose={handleClosePopup} />
-      )}
+      {showPopup && <Popup onClose={handleClosePopup} />}
       <Footer />
     </>
   );

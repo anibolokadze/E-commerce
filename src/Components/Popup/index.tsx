@@ -1,8 +1,9 @@
-const Popup = ({ message, onClose }: any) => {
+import "./Popup.scss";
+const Popup = ({ onClose }: any) => {
   return (
     <div className="popup">
       <div className="popup-content">
-        <p>{message}</p>
+        <p>TAKE 15% OFF YOUR FIRST ORDER</p>
         <button className="close-button" onClick={onClose}>
           Close
         </button>
