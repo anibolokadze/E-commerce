@@ -3,6 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { fetchPopularProducts, PopularProduct } from "../../api";
 import eye from "../../assets/icons8-eye-30.png";
 import star from "../../assets/glowing-star.png";
+import comingSoon from "../../assets/coming soon.gif";
 import "./index.scss";
 
 const PopularProductList: React.FC = () => {
@@ -49,42 +50,51 @@ const PopularProductList: React.FC = () => {
   }, [controls]);
 
   return (
-    <motion.div
-      className="product-wrapper"
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.2, ease: "easeIn" }}
-    >
-      <h1>
-        <mark>POPULAR PRODUCTS</mark>
-      </h1>
-      <ul>
-        {popularProducts.map((product) => (
-          <li key={product.title}>
-            <div className="product-container">
-              <div className="image-wrapper">
-                <img src={product.image} alt={product.title} />
+    <>
+      <motion.div
+        className="product-wrapper"
+        initial="hidden"
+        animate={controls}
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          show: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.2, ease: "easeIn" }}
+      >
+        <h1>
+          <mark>POPULAR PRODUCTS</mark>
+        </h1>
+        <ul>
+          {popularProducts.map((product) => (
+            <li key={product.title}>
+              <div className="product-container">
+                <div className="image-wrapper">
+                  <img src={product.image} alt={product.title} />
+                </div>
+                <div className="product-info">
+                  <p>{product.title}</p>
+                  <p>$ {product.price}</p>
+                </div>
               </div>
-              <div className="product-info">
-                <p>{product.title}</p>
-                <p>$ {product.price}</p>
+              <div className="rating-info">
+                <img src={star} alt={star} />
+                {product.rating.rate}
               </div>
-            </div>
-            <div className="rating-info">
-              <img src={star} alt={star} />
-              {product.rating.rate}
-            </div>
-            <button className="button-overlay">
-              <img src={eye} alt={eye} /> Quick view
-            </button>
-          </li>
-        ))}
-      </ul>
-    </motion.div>
+              <button className="button-overlay">
+                <img src={eye} alt={eye} /> Quick view
+              </button>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+      {/* <div className="coming-soon">
+        <div className="wrapper"></div>
+      </div> */}
+
+      <div>
+        <img src={comingSoon} alt={comingSoon} className="coming-soon" />
+      </div>
+    </>
   );
 };
 
