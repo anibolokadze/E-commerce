@@ -33,7 +33,7 @@ button{
     text-align: center;
     border-radius: 4px;
 }
-img{
+img, h1{
     cursor: pointer;
 }
 input{
@@ -43,6 +43,15 @@ input{
     border-radius: 5px;
 }
 
-h1 {
-    cursor: pointer;
+
+/* when the popup message shows, the background will be blurred */
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(111, 111, 111, 0.5);
+    backdrop-filter: blur(10px);
 }
+  

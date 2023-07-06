@@ -12,8 +12,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-      console.log("Popup shown!"); // Log the message when the popup is shown
-    }, 8000);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
@@ -29,6 +28,7 @@ const App = () => {
       <Navbar />
       <CoverPhoto />
       <PopularProducts />
+      {showPopup && <div className="blur-overlay" />}
       {showPopup && <Popup onClose={handleClosePopup} />}
       <Footer />
     </>
