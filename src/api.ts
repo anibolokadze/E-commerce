@@ -22,7 +22,3 @@ export const fetchPopularProducts = async (): Promise<AxiosResponse> => {
     throw new Error(error);
   }
 };
-
-
-
-

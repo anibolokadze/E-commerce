@@ -1,38 +1,15 @@
-import "./App.css";
-import Navbar from "./Components/Navbar";
-import CoverPhoto from "./Components/CoverPhoto";
-import PopularProducts from "./Components/PopularProducts";
-import Footer from "./Components/Footer";
-import Popup from "./Components/Popup";
-import { useState, useEffect } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
 
-const App = () => {
-  const [showPopup, setShowPopup] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 2000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
-
+const AppRouter = () => {
   return (
-    <>
-      <Navbar />
-      <CoverPhoto />
-      <PopularProducts />
-      {showPopup && <div className="blur-overlay" />}
-      {showPopup && <Popup onClose={handleClosePopup} />}
-      <Footer />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 };
 
-export default App;
+export default AppRouter;
