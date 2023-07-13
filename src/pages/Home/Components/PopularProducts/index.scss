@@ -1,9 +1,16 @@
-.loading{
-  height: 100vh;
+.loading, .error{
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  max-width: 80%;
+  border-radius: 20px;
+  margin: 0 auto;
+  column-gap: 50px;
+  padding: 0 25px;
 }
+
 Link p{
   color: green !important;
 }

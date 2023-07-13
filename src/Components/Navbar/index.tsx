@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./index.scss";
 import logo from "../../assets/logo.svg";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const navRef = useRef();
@@ -12,7 +13,9 @@ function Navbar() {
 
   return (
     <header>
-      <img src={logo} alt={logo} />
+      <Link to="/">
+        <img src={logo} alt={logo} />
+      </Link>
       <nav ref={navRef}>
         <a href="/#">Men</a>
         <a href="/#">Women</a>

@@ -7,10 +7,10 @@ export interface PopularProduct {
   rating: {
     rate: number;
   };
-  image: string
+  image: string;
 }
 
-export const fetchPopularProducts = async (): Promise<AxiosResponse> => {
+export const fetchPopularProducts = async (): Promise<AxiosResponse<PopularProduct[]>> => {
   try {
     const response = await axios.get<PopularProduct[]>('https://fakestoreapi.com/products');
     const filteredProducts = response.data

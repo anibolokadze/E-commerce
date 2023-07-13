@@ -1,10 +1,8 @@
-import "../App.css";
+import "../../App.css";
 import { useState, useEffect } from "react";
-import Navbar from "../Components/Navbar";
-import CoverPhoto from "../Components/CoverPhoto";
-import PopularProducts from "../Components/PopularProducts";
-import Footer from "../Components/Footer";
-import Popup from "../Components/Popup";
+import CoverPhoto from "./Components/CoverPhoto";
+import PopularProducts from "./Components/PopularProducts";
+import Popup from "./Components/Popup";
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -25,12 +23,10 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
       <CoverPhoto />
       <PopularProducts />
       {showPopup && <div className="blur-overlay" />}
       {showPopup && <Popup onClose={handleClosePopup} />}
-      <Footer />
     </>
   );
 };

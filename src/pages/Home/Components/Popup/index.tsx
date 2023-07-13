@@ -1,6 +1,6 @@
 import "./Popup.scss";
-import popup from "../../assets/popup.gif";
-import sparkle from "../../assets/sparkle.png";
+import popup from "../../../../assets/popup.gif";
+import sparkle from "../../../../assets/sparkle.png";
 import { FormEvent, useState } from "react";
 
 const Popup = ({ onClose }: any) => {

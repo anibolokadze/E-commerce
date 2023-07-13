@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { fetchPopularProducts, PopularProduct } from "../../api";
-import { Link, useNavigate } from "react-router-dom";
-import eye from "../../assets/icons8-eye-30.png";
-import star from "../../assets/glowing-star.png";
-import comingSoon from "../../assets/coming soon.gif";
-import loading from "../../assets/loading.gif";
+import { fetchPopularProducts, PopularProduct } from "../../../../api";
+import { Link } from "react-router-dom";
+import eye from "../../../../assets/icons8-eye-30.png";
+import star from "../../../../assets/glowing-star.png";
+import comingSoon from "../../../../assets/coming soon.gif";
+import loading from "../../../../assets/loading.gif";
+import notFound from "../../../../assets/notfound.gif";
 import "./index.scss";
 
 const PopularProductList: React.FC = () => {
   const [popularProducts, setPopularProducts] = useState<PopularProduct[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string>("");
   const controls = useAnimation();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch popular products from API
     const fetchPopularProductsFromApi = async () => {
       try {
         const response = await fetchPopularProducts();
         setPopularProducts(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        setIsLoading(false);
+        setError("Error occurred while fetching popular products.");
       }
     };
 
@@ -30,7 +31,6 @@ const PopularProductList: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Handle scroll event to trigger animation
     const onScroll = () => {
       const scrollThreshold = window.innerHeight * 0.9;
       const productWrapper = document.querySelector(".product-wrapper");
@@ -44,13 +44,13 @@ const PopularProductList: React.FC = () => {
       }
     };
 
-    const controlsPromise = controls.start("hidden"); // Start with hidden state
+    const controlsPromise = controls.start("hidden");
     onScroll();
 
     window.addEventListener("scroll", onScroll);
 
     return () => {
-      controlsPromise.then(controls.stop); // Stop animation on unmount
+      controlsPromise.then(controls.stop);
     };
   }, [controls]);
 
@@ -59,6 +59,11 @@ const PopularProductList: React.FC = () => {
       {isLoading ? (
         <div className="loading">
           <img src={loading} alt={loading} />
+        </div>
+      ) : error ? (
+        <div className="error">
+          <p>{error}</p>
+          <img src={notFound} alt={notFound} />
         </div>
       ) : (
         <>
@@ -78,7 +83,10 @@ const PopularProductList: React.FC = () => {
             <ul>
               {popularProducts.map((product) => (
                 <li key={product.title}>
-                  <Link to="/" className="product-link">
+                  <Link
+                    to={`/products/${encodeURIComponent(product.title)}`}
+                    className="product-link"
+                  >
                     <div className="product-container">
                       <div className="image-wrapper">
                         <img src={product.image} alt={product.title} />
@@ -100,12 +108,11 @@ const PopularProductList: React.FC = () => {
               ))}
             </ul>
           </motion.div>
-
-          <div>
-            <img src={comingSoon} alt={comingSoon} className="coming-soon" />
-          </div>
         </>
       )}
+      <div>
+        <img src={comingSoon} alt={comingSoon} className="coming-soon" />
+      </div>
     </>
   );
 };
