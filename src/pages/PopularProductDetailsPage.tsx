@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchPopularProducts, PopularProduct } from "../api";
+import loading from "../assets/loading.gif";
+import notFound from "../assets/notfound.gif";
 
 const ProductDetailsPage: React.FC = () => {
   const { productTitle } = useParams<{ productTitle: string }>();
   const [product, setProduct] = useState<PopularProduct | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -17,8 +21,10 @@ const ProductDetailsPage: React.FC = () => {
         if (selectedProduct) {
           setProduct(selectedProduct);
         }
+        setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        setIsLoading(false);
+        setError("Error occurred while fetching popular products.");
       }
     };
 
@@ -26,18 +32,25 @@ const ProductDetailsPage: React.FC = () => {
   }, [productTitle]);
 
   return (
-    <div>
+    <>
       <h1>Product Details</h1>
-      {product ? (
+      {isLoading ? (
+        <div className="loading">
+          <img src={loading} alt={loading} />
+        </div>
+      ) : error ? (
+        <div className="error">
+          <p>{error}</p>
+          <img src={notFound} alt={notFound} />
+        </div>
+      ) : (
         <>
           <p>Product Title: {product.title}</p>
           <img src={product.image} alt={product.title} />
           <p>Price: $ {product.price}</p>
         </>
-      ) : (
-        <p>Loading...</p>
       )}
-    </div>
+    </>
   );
 };
 

@@ -44,13 +44,17 @@ const PopularProductList: React.FC = () => {
       }
     };
 
-    const controlsPromise = controls.start("hidden");
-    onScroll();
+    const onScrollWithControls = () => {
+      onScroll();
+    };
 
-    window.addEventListener("scroll", onScroll);
+    const controlsPromise = controls.start("hidden");
+
+    window.addEventListener("scroll", onScrollWithControls);
 
     return () => {
-      controlsPromise.then(controls.stop);
+      window.removeEventListener("scroll", onScrollWithControls);
+      controlsPromise.then(() => controls.stop());
     };
   }, [controls]);
 
