@@ -1,6 +1,6 @@
 import "./index.scss";
 
-const Slider: React.FC = () => {
+const CoverPhoto: React.FC = () => {
   return (
     <div className="image-slider">
       <div className="wrapper"></div>
@@ -8,4 +8,4 @@ const Slider: React.FC = () => {
   );
 };
 
-export default Slider;
+export default CoverPhoto;

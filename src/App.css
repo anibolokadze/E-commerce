@@ -33,7 +33,7 @@ button{
     text-align: center;
     border-radius: 4px;
 }
-img, h1{
+img{
     cursor: pointer;
 }
 input{

@@ -14,12 +14,13 @@ function Navbar() {
   return (
     <header>
       <Link to="/">
-        <img src={logo} alt={logo} />
+        <img src={logo} alt={logo} className="logo" />
       </Link>
+
       <nav ref={navRef}>
-        <a href="/#">Men</a>
-        <a href="/#">Women</a>
-        <a href="/#">Jewelry</a>
+        <Link to="/">Men</Link>
+        <Link to="/">Women</Link>
+        <Link to="/">Jewelry</Link>
 
         <div className="icons">
           {/* SVG paths */}

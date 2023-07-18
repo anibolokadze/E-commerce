@@ -88,7 +88,9 @@ const PopularProductList: React.FC = () => {
               {popularProducts.map((product) => (
                 <li key={product.title}>
                   <Link
-                    to={`/products/${encodeURIComponent(product.title)}`}
+                    to={`/popular-products/${encodeURIComponent(
+                      product.title
+                    )}`}
                     className="product-link"
                   >
                     <div className="product-container">
