@@ -1,26 +1,35 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./index.scss";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 
-function Navbar() {
-  const navRef = useRef();
+const Navbar: React.FC = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const showNavbar = () => {
-    navRef.current.classList.toggle("responsive_nav");
+    setIsNavOpen((prevIsNavOpen) => !prevIsNavOpen);
   };
 
+  const closeNavbar = () => {
+    setIsNavOpen(false);
+  };
   return (
     <header>
       <Link to="/">
         <img src={logo} alt={logo} className="logo" />
       </Link>
 
-      <nav ref={navRef}>
-        <Link to="/">Men</Link>
-        <Link to="/">Women</Link>
-        <Link to="/">Jewelry</Link>
+      <nav className={isNavOpen ? "responsive_nav" : ""}>
+        <Link to="/men" onClick={closeNavbar}>
+          Men
+        </Link>
+        <Link to="/women" onClick={closeNavbar}>
+          Women
+        </Link>
+        <Link to="/jewelery" onClick={closeNavbar}>
+          Jewelery
+        </Link>
 
         <div className="icons">
           {/* SVG paths */}
@@ -81,6 +90,6 @@ function Navbar() {
       </button>
     </header>
   );
-}
+};
 
 export default Navbar;

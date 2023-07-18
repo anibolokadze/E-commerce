@@ -63,8 +63,8 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({
           <h2>You might also like</h2>
           <Slider ref={sliderRef} {...settings}>
             {popularProducts.map((product) => (
-              <div className="items">
-                <li key={product.title}>
+              <div className="items" key={product.title}>
+                <li>
                   <Link
                     to={`/popular-products/${encodeURIComponent(
                       product.title

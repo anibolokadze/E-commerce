@@ -42,6 +42,7 @@ const ProductDetailsPage: React.FC = () => {
             .join(" ");
           selectedProduct.description = maxDescriptionWords;
           setProduct(selectedProduct);
+          setProductAmount(0);
         }
         setIsLoading(false);
       } catch (error) {

@@ -4,6 +4,9 @@ import Home from "./pages/Home/Home";
 import PopularProductDetailsPage from "./pages/PopularProductsDetails";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import MenCategory from "./pages/MenCategory";
+import WomenCategory from "./pages/WomenCategory";
+import JeweleryCategory from "./pages/JeweleryCategory";
 
 const App: React.FC = () => {
   return (
@@ -15,7 +18,11 @@ const App: React.FC = () => {
           path="/popular-products/:productTitle"
           element={<PopularProductDetailsPage />}
         />
+        <Route path="/men" element={<MenCategory />} />
+        <Route path="/women" element={<WomenCategory />} />
+        <Route path="/jewelery" element={<JeweleryCategory />} />
       </Routes>
+
       <Footer />
     </Router>
   );
