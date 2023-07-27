@@ -1,0 +1,18 @@
+.filter{
+    background-color: red;
+    .slider{
+        width: 150px;
+        height: 2px;
+        background-color: #cdd9ed;
+    
+        .thumb{
+            width: 23px;
+            height: 23px;
+            cursor: pointer;
+            background: #fff;
+            border-radius: 50%;
+            border: 2px solid #275efe;
+            top: -10px;
+        }
+    }
+}

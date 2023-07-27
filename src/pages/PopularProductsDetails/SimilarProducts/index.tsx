@@ -40,7 +40,6 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({
 
   // Configuration options for the carousel
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3, // Number of products to show at once

@@ -7,6 +7,7 @@ import Footer from "./Components/Footer";
 import MenCategory from "./pages/MenCategory";
 import WomenCategory from "./pages/WomenCategory";
 import JeweleryCategory from "./pages/JeweleryCategory";
+import CategoryDetails from "./pages/CategoryDetails";
 
 const App: React.FC = () => {
   return (

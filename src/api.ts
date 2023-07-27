@@ -12,6 +12,9 @@ export interface PopularProduct {
 }
 
 export interface MenCategoryData{
+  rating: {
+    rate: number;
+  };
   description: string;
   category: string;
   title: string;
@@ -20,6 +23,9 @@ export interface MenCategoryData{
 }
 
 export interface WomenCategoryData{
+  rating: {
+    rate: number;
+  };
   description: string;
   category: string;
   title: string;
@@ -28,6 +34,9 @@ export interface WomenCategoryData{
 }
 
 export interface JeweleryCategoryData{
+  rating: {
+    rate: number;
+  };
   description: string;
   category: string;
   title: string;
@@ -75,4 +84,3 @@ export const fetchJeweleryCategory = async (): Promise<AxiosResponse<JeweleryCat
     throw new Error(error);
   }
 }
-
