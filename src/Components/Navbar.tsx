@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import "./index.scss";
-import logo from "../../assets/logo.svg";
+import styles from "../styles/navbar.module.scss";
+import logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
@@ -14,24 +14,25 @@ const Navbar: React.FC = () => {
   const closeNavbar = () => {
     setIsNavOpen(false);
   };
+
   return (
-    <header>
+    <header className={styles.navbar}>
       <Link to="/">
-        <img src={logo} alt={logo} className="logo" />
+        <img src={logo} alt={logo} className={styles.logo} />
       </Link>
 
-      <nav className={isNavOpen ? "responsive_nav" : ""}>
-        <Link to="/men" onClick={closeNavbar}>
+      <nav className={isNavOpen ? styles.responsive_nav : ""}>
+        <Link to="/men" onClick={closeNavbar} className={styles.navLink}>
           Men
         </Link>
-        <Link to="/women" onClick={closeNavbar}>
+        <Link to="/women" onClick={closeNavbar} className={styles.navLink}>
           Women
         </Link>
-        <Link to="/jewelery" onClick={closeNavbar}>
+        <Link to="/jewelery" onClick={closeNavbar} className={styles.navLink}>
           Jewelery
         </Link>
 
-        <div className="icons">
+        <div className={styles.icons}>
           {/* SVG paths */}
           <svg
             fill="#000000"
@@ -81,11 +82,14 @@ const Navbar: React.FC = () => {
             </g>
           </svg>
         </div>
-        <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+        <button
+          className={`${styles["nav-btn"]} ${styles["nav-close-btn"]}`}
+          onClick={showNavbar}
+        >
           <FaTimes />
         </button>
       </nav>
-      <button className="nav-btn" onClick={showNavbar}>
+      <button className={styles["nav-btn"]} onClick={showNavbar}>
         <FaBars />
       </button>
     </header>

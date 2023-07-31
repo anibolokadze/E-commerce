@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { AxiosResponse } from "axios";
-import Filter from "../../Components/Filter";
-import loading from "../../assets/loading.gif";
-import notFound from "../../assets/notfound.gif";
-import eye from "../../assets/icons8-eye-30.png";
-import star from "../../assets/glowing-star.png";
+import Filter from "./Filter";
+import loading from "../assets/loading.gif";
+import notFound from "../assets/notfound.gif";
+import eye from "../assets/icons8-eye-30.png";
+import star from "../assets/glowing-star.png";
 import { Link } from "react-router-dom";
-import "./index.scss";
+import styles from "../styles/category.module.scss";
 
 interface CategoryData {
   rating: {
@@ -93,11 +93,11 @@ const CategoryPage: React.FC<CategoryProps> = ({
   return (
     <>
       {isLoading ? (
-        <div className="loading">
+        <div className={styles.loading}>
           <img src={loading} alt={loading} />
         </div>
       ) : error ? (
-        <div className="error">
+        <div className={styles.error}>
           <p>{error}</p>
           <img src={notFound} alt={notFound} />
         </div>
@@ -111,7 +111,7 @@ const CategoryPage: React.FC<CategoryProps> = ({
           />
 
           {message ? (
-            <div className="error">
+            <div className={styles.error}>
               <p>{message}</p>
               <img src={notFound} alt={notFound} />
             </div>
@@ -123,22 +123,22 @@ const CategoryPage: React.FC<CategoryProps> = ({
                     to={`/category-details/${encodeURIComponent(
                       product.title
                     )}`}
-                    className="product-link"
+                    className={styles.productLink}
                   >
-                    <div className="product-container">
-                      <div className="image-wrapper">
+                    <div className={styles.productContainer}>
+                      <div className={styles.imageWrapper}>
                         <img src={product.image} alt={product.title} />
                       </div>
-                      <div className="product-info">
+                      <div className={styles.productInfo}>
                         <p>{product.title}</p>
                         <p>$ {product.price}</p>
                       </div>
                     </div>
-                    <div className="rating-info">
+                    <div className={styles.ratingInfo}>
                       <img src={star} alt={star} />
                       {product.rating.rate}
                     </div>
-                    <button className="button-overlay">
+                    <button className={styles.buttonOverlay}>
                       <img src={eye} alt={eye} /> Quick view
                     </button>
                   </Link>
