@@ -1,17 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-export interface PopularProduct {
-  description: string;
-  category: string;
-  title: string;
-  price: number | string;
-  rating: {
-    rate: number;
-  };
-  image: string;
-}
-
-export interface MenCategoryData{
+export interface CategoryData {
   rating: {
     rate: number;
   };
@@ -22,7 +11,8 @@ export interface MenCategoryData{
   image: string;
 }
 
-export interface WomenCategoryData{
+export interface ProductDetails {
+  find(arg0: (item: any) => boolean): unknown;
   rating: {
     rate: number;
   };
@@ -33,20 +23,9 @@ export interface WomenCategoryData{
   image: string;
 }
 
-export interface JeweleryCategoryData{
-  rating: {
-    rate: number;
-  };
-  description: string;
-  category: string;
-  title: string;
-  price: number | string;
-  image: string;
-}
-
-export const fetchPopularProducts = async (): Promise<AxiosResponse<PopularProduct[]>> => {
+export const fetchPopularProducts = async (): Promise<AxiosResponse<CategoryData[]>> => {
   try {
-    const response = await axios.get<PopularProduct[]>('https://fakestoreapi.com/products');
+    const response = await axios.get<CategoryData[]>('https://fakestoreapi.com/products');
     const filteredProducts = response.data
       .filter((product) => product.category !== 'electronics')
       .sort((a, b) => b.rating.rate - a.rating.rate)
@@ -58,29 +37,41 @@ export const fetchPopularProducts = async (): Promise<AxiosResponse<PopularProdu
   }
 };
 
-export const fetchMenCategory = async (): Promise<AxiosResponse<MenCategoryData[]>> => {
-  try{
-    const response = await axios.get<MenCategoryData[]>('https://fakestoreapi.com/products/category/men\'s clothing');
+export const fetchMenCategory = async (): Promise<AxiosResponse<CategoryData[]>> => {
+  try {
+    const response = await axios.get<CategoryData[]>('https://fakestoreapi.com/products/category/men\'s clothing');
     return response;
-  } catch (error){
+  } catch (error) {
     throw new Error(error);
   }
-}
+};
 
-export const fetchWomenCategory = async (): Promise<AxiosResponse<WomenCategoryData[]>> => {
-  try{
-    const response = await axios.get<WomenCategoryData[]>('https://fakestoreapi.com/products/category/women\'s clothing');
+export const fetchWomenCategory = async (): Promise<AxiosResponse<CategoryData[]>> => {
+  try {
+    const response = await axios.get<CategoryData[]>('https://fakestoreapi.com/products/category/women\'s clothing');
     return response;
-  } catch (error){
+  } catch (error) {
     throw new Error(error);
   }
-}
+};
 
-export const fetchJeweleryCategory = async (): Promise<AxiosResponse<JeweleryCategoryData[]>> => {
-  try{
-    const response = await axios.get<JeweleryCategoryData[]>('https://fakestoreapi.com/products/category/jewelery');
+export const fetchJeweleryCategory = async (): Promise<AxiosResponse<CategoryData[]>> => {
+  try {
+    const response = await axios.get<CategoryData[]>('https://fakestoreapi.com/products/category/jewelery');
     return response;
-  } catch (error){
+  } catch (error) {
     throw new Error(error);
   }
-}
+};
+
+export const fetchProductDetails = async (productTitle: string): Promise<AxiosResponse<ProductDetails>> => {
+  try {
+    const response = await axios.get<ProductDetails>(`https://fakestoreapi.com/products`);
+    const product = response.data.find((item) => item.title === productTitle);
+    if (product) {
+      return { ...response, data: product };
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+};

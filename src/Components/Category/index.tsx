@@ -120,7 +120,9 @@ const CategoryPage: React.FC<CategoryProps> = ({
               {filteredData.map((product) => (
                 <li key={product.title}>
                   <Link
-                    to={`/product-details/${encodeURIComponent(product.title)}`}
+                    to={`/category-details/${encodeURIComponent(
+                      product.title
+                    )}`}
                     className="product-link"
                   >
                     <div className="product-container">

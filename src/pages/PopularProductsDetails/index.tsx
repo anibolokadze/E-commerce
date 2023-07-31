@@ -8,10 +8,10 @@ import "./index.scss";
 
 const ProductDetailsPage: React.FC = () => {
   const { productTitle } = useParams<{ productTitle: string }>();
-  const [product, setProduct] = useState<PopularProduct | null>(null);
+  const [product, setProduct] = useState<PopularProduct>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>("");
-  const [productAmount, setProductAmount] = useState<number | null>(0);
+  const [productAmount, setProductAmount] = useState<number>(0);
 
   const add = () => {
     setProductAmount(productAmount + 1);
