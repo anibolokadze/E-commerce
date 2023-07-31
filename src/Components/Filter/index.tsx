@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Slider from "react-slider";
-import style from "./filter.module.scss";
+import styles from "./filter.module.scss";
 
 interface FilterProps {
   minPrice: number;
@@ -29,7 +29,7 @@ const Filter: React.FC<FilterProps> = ({
 
   return (
     <>
-      <div className={style.filter}>
+      <div className={styles.filter}>
         <div className="heading" onClick={handleClick}>
           <p>Filter</p>
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAcUlEQVR4nO2VwQnAIAxF3wx15dpxOoMLCB2nnuyhOYgXG9GDNA8+SiCYj3wCxssBJCDL6ZlAAja5O+BuNVwykVYlZf1koBOncdKDr/5kn/GIsUAOWgRlDnJDkY9YDoyF8hMH7ZEsCiOcuB4nGvw/98gDw8dY0pEG0z8AAAAASUVORK5CYII=" />
