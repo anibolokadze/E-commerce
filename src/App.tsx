@@ -13,6 +13,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -20,6 +21,10 @@ const App: React.FC = () => {
           element={<PopularProductDetailsPage />}
         />
         <Route path="/men" element={<MenCategory />} />
+        <Route
+          path="/product-details/:productTitle"
+          element={<CategoryDetails />}
+        />
         <Route path="/women" element={<WomenCategory />} />
         <Route path="/jewelery" element={<JeweleryCategory />} />
       </Routes>

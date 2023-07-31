@@ -103,6 +103,7 @@ ul{
 @media (min-width: 1000px) {
     ul {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        margin-bottom: 300px;
     }
 }
 
