@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import CoverPhoto from "./Components/CoverPhoto";
 import PopularProducts from "./Components/PopularProducts";
 import Popup from "./Components/Popup";
+import Footer from "../../Components/Footer";
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -27,6 +28,7 @@ const App = () => {
       <PopularProducts />
       {showPopup && <div className="blur-overlay" />}
       {showPopup && <Popup onClose={handleClosePopup} />}
+      <Footer />
     </>
   );
 };
