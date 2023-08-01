@@ -23,7 +23,7 @@ const Filter: React.FC<FilterProps> = ({
     onFilter(values[0], values[1]);
   };
 
-  const handleClick = (event) => {
+  const handleClick = () => {
     setIsShown((current) => !current);
   };
 

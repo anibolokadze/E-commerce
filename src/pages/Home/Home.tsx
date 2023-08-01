@@ -1,8 +1,8 @@
 import "../../App.css";
 import { useState, useEffect } from "react";
-import CoverPhoto from "./Components/CoverPhoto";
-import PopularProducts from "./Components/PopularProducts";
-import Popup from "./Components/Popup";
+import CoverPhoto from "./CoverPhoto";
+import PopularProducts from "./PopularProducts";
+import Popup from "./Popup";
 import Footer from "../../Components/Footer";
 
 const App = () => {

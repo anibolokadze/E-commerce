@@ -16,7 +16,7 @@
 Link p{
   color: green !important;
 }
-.product-wrapper {
+.productWrapper {
   margin: 100px 0;
   padding: 0px 30px;
   &.show {
@@ -63,16 +63,16 @@ Link p{
         border: 1px solid rgb(123, 123, 123);
       }
 
-      .product-link{
+      .productLink{
         color: black !important;
         
-        .product-container {
+        .productContainer {
           overflow: hidden;
           display: flex;
           flex-direction: column;
           text-align: center;
   
-          .image-wrapper {
+          .imageWrapper {
             height: 300px;
             display: flex;
             align-items: center;
@@ -86,7 +86,7 @@ Link p{
             }
           }
   
-          &:hover .image-wrapper img {
+          &:hover .imageWrapper img {
             transform: scale(1.03);
           }
   
@@ -97,7 +97,7 @@ Link p{
       }
       
 
-      .rating-info {
+      .ratingInfo {
         position: absolute;
         top: 0%;
         right: 0%;
@@ -114,7 +114,7 @@ Link p{
         }
       }
 
-      .button-overlay {
+      .buttonOverlay {
         position: relative;
         top: 0;
         left: 50%;
@@ -134,7 +134,7 @@ Link p{
         }
       }
 
-      &:hover .button-overlay {
+      &:hover .buttonOverlay {
         opacity: 1;
       }
 
@@ -166,7 +166,7 @@ Link p{
   }
 }
 
-.coming-soon {
+.comingSoon {
   width: 100%;
   max-height: 50vh;
   height: fit-content;

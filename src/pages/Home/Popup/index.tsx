@@ -1,6 +1,6 @@
-import "./Popup.scss";
-import popup from "../../../../assets/popup.gif";
-import sparkle from "../../../../assets/sparkle.png";
+import styles from "./popup.module.scss";
+import popup from "../../../assets/popup.gif";
+import sparkle from "../../../assets/sparkle.png";
 import { FormEvent, useState } from "react";
 
 const Popup = ({ onClose }: any) => {
@@ -16,12 +16,12 @@ const Popup = ({ onClose }: any) => {
   };
 
   return (
-    <div className="popup active">
-      <div className="popup-content">
+    <div className={`${styles["popup"]} ${styles["active"]}`}>
+      <div className={styles.popupContent}>
         <img src={popup} alt={popup} />
 
         <h2>TAKE 15% OFF YOUR FIRST ORDER</h2>
-        <button className="close-button" onClick={onClose}>
+        <button className={styles.closeButton} onClick={onClose}>
           Close
         </button>
 
@@ -32,11 +32,14 @@ const Popup = ({ onClose }: any) => {
       </div>
 
       {showSecondPopup && (
-        <div className="popup active">
-          <div className="popup-content">
+        <div className={`${styles["popup"]} ${styles["active"]}`}>
+          <div className={styles.popupContent}>
             <img src={sparkle} alt={sparkle} />
             <h2>Thank you for your submission!</h2>
-            <button className="close-button" onClick={handleCloseSecondPopup}>
+            <button
+              className={styles.closeButton}
+              onClick={handleCloseSecondPopup}
+            >
               Close
             </button>
           </div>

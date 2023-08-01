@@ -6,7 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import loading from "../../../assets/loading.gif";
 import notFound from "../../../assets/notfound.gif";
-import "./index.scss";
+import "./similarProducts.scss";
+import errorHandlingStyles from "../../Home/PopularProducts/popularProducts.module.scss";
+import "./similarProducts.scss";
 
 interface SimilarProductsProps {
   excludeProductTitle?: string;
@@ -49,11 +51,11 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({
   return (
     <>
       {isLoading ? (
-        <div className="loading">
+        <div className={errorHandlingStyles.loading}>
           <img src={loading} alt={loading} />
         </div>
       ) : error ? (
-        <div className="error">
+        <div className={errorHandlingStyles.error}>
           <p>{error}</p>
           <img src={notFound} alt={notFound} />
         </div>

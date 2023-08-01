@@ -6,6 +6,7 @@ import notFound from "../assets/notfound.gif";
 import eye from "../assets/icons8-eye-30.png";
 import star from "../assets/glowing-star.png";
 import { Link } from "react-router-dom";
+import errorHandlingStyles from "../pages/Home/PopularProducts/popularProducts.module.scss";
 import styles from "../styles/category.module.scss";
 
 interface CategoryData {
@@ -93,11 +94,11 @@ const CategoryPage: React.FC<CategoryProps> = ({
   return (
     <>
       {isLoading ? (
-        <div className={styles.loading}>
+        <div className={errorHandlingStyles.loading}>
           <img src={loading} alt={loading} />
         </div>
       ) : error ? (
-        <div className={styles.error}>
+        <div className={errorHandlingStyles.error}>
           <p>{error}</p>
           <img src={notFound} alt={notFound} />
         </div>
@@ -111,7 +112,7 @@ const CategoryPage: React.FC<CategoryProps> = ({
           />
 
           {message ? (
-            <div className={styles.error}>
+            <div className={errorHandlingStyles.error}>
               <p>{message}</p>
               <img src={notFound} alt={notFound} />
             </div>
