@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Slider from "react-slider";
-import "../styles/filter.scss";
+import "./styles/filter.scss";
 
+// Interface for FilterProps
 interface FilterProps {
   minPrice: number;
   maxPrice: number;
@@ -18,11 +19,13 @@ const Filter: React.FC<FilterProps> = ({
   const [values, setValues] = useState<[number, number]>([minPrice, maxPrice]);
   const [isShown, setIsShown] = useState<boolean>(false);
 
+  // Handle price range filtering
   const handleFilter = (values: number[]) => {
     setValues(values);
     onFilter(values[0], values[1]);
   };
 
+  // Toggle filter visibility
   const handleClick = () => {
     setIsShown((current) => !current);
   };

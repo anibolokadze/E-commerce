@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import styles from "../styles/navbar.module.scss";
+import styles from "./styles/navbar.module.scss";
 import logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+  // Show or hide the navigation menu
   const showNavbar = () => {
     setIsNavOpen((prevIsNavOpen) => !prevIsNavOpen);
   };
 
+  // Close the navigation menu
   const closeNavbar = () => {
     setIsNavOpen(false);
   };

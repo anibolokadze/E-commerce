@@ -7,8 +7,9 @@ import eye from "../assets/icons8-eye-30.png";
 import star from "../assets/glowing-star.png";
 import { Link } from "react-router-dom";
 import errorHandlingStyles from "../pages/Home/PopularProducts/popularProducts.module.scss";
-import styles from "../styles/category.module.scss";
+import styles from "./styles/category.module.scss";
 
+// Interfaces for CategoryData and CategoryProps
 interface CategoryData {
   rating: {
     rate: number;
@@ -39,6 +40,7 @@ const CategoryPage: React.FC<CategoryProps> = ({
   const [maxPrice, setMaxPrice] = useState<number>(12000);
   const [message, setMessage] = useState<string>("");
 
+  // Fetch data from API on component mount
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {

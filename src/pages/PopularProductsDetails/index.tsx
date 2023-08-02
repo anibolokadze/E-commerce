@@ -15,20 +15,24 @@ const ProductDetailsPage: React.FC = () => {
   const [productAmount, setProductAmount] = useState<number>(0);
 
   const add = () => {
+    // Increase the product amount when the "+" button is clicked
     setProductAmount(productAmount + 1);
   };
 
   const remove = () => {
+    // Decrease the product amount when the "-" button is clicked (minimum 0)
     if (productAmount > 0) {
       setProductAmount(productAmount - 1);
     }
   };
 
   useEffect(() => {
+    // Scroll to the top of the page when product details change
     window.scrollTo(0, 0);
   }, [product]);
 
   useEffect(() => {
+    // Fetch product details from API when component mounts or productTitle changes
     const fetchProductDetails = async () => {
       try {
         const response = await fetchPopularProducts();
@@ -37,6 +41,7 @@ const ProductDetailsPage: React.FC = () => {
           (product) => product.title === productTitle
         );
         if (selectedProduct) {
+          // Limit the description to the first 30 words
           const maxDescriptionWords = selectedProduct.description
             .split(" ")
             .slice(0, 30)
@@ -58,15 +63,18 @@ const ProductDetailsPage: React.FC = () => {
   return (
     <>
       {isLoading ? (
+        // Show loading spinner while data is being fetched
         <div className={errorHandlingStyles.loading}>
           <img src={loading} alt={loading} />
         </div>
       ) : error ? (
+        // Show error message if there's an error
         <div className={errorHandlingStyles.error}>
           <p>{error}</p>
           <img src={notFound} alt={notFound} />
         </div>
       ) : (
+        // Display product details when data is available
         <div className={styles.container}>
           <img src={product.image} alt={product.title} />
 
@@ -90,6 +98,7 @@ const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
       )}
+      {/* Render the SimilarProducts component passing the excluded product title */}
       <SimilarProducts excludeProductTitle={product?.title} />
     </>
   );

@@ -23,6 +23,7 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({
   const sliderRef = useRef<Slider>(null);
 
   useEffect(() => {
+    // Fetch popular products from API excluding the current product title
     const fetchPopularProductsFromApi = async () => {
       try {
         const response = await fetchPopularProducts();
@@ -51,15 +52,18 @@ const SimilarProducts: React.FC<SimilarProductsProps> = ({
   return (
     <>
       {isLoading ? (
+        // Show loading spinner while data is being fetched
         <div className={errorHandlingStyles.loading}>
           <img src={loading} alt={loading} />
         </div>
       ) : error ? (
+        // Show error message if there's an error
         <div className={errorHandlingStyles.error}>
           <p>{error}</p>
           <img src={notFound} alt={notFound} />
         </div>
       ) : (
+        // Display similar products carousel when data is available
         <div className="slider-container">
           <h2>You might also like</h2>
           <Slider ref={sliderRef} {...settings}>

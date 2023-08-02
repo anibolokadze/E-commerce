@@ -17,11 +17,13 @@ const CategoryDetails: React.FC = () => {
   const [error, setError] = useState<string>("");
   const [productAmount, setProductAmount] = useState<number>(0);
 
+  // Scroll to the top of the page when productDetails state changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [productDetails]);
 
   useEffect(() => {
+    // Fetch product details from API when component mounts or productTitle changes
     const fetchDataFromApi = async () => {
       try {
         const response = await fetchProductDetails(productTitle);
@@ -30,6 +32,7 @@ const CategoryDetails: React.FC = () => {
         setError("");
 
         if (response.data && response.data.description) {
+          // Limit the description to the first 30 words
           const maxDescriptionWords = response.data.description
             .split(" ")
             .slice(0, 30)
@@ -48,10 +51,12 @@ const CategoryDetails: React.FC = () => {
   }, [productTitle]);
 
   const add = () => {
+    // Increase the product amount when the "+" button is clicked
     setProductAmount(productAmount + 1);
   };
 
   const remove = () => {
+    // Decrease the product amount when the "-" button is clicked (minimum 0)
     if (productAmount > 0) {
       setProductAmount(productAmount - 1);
     }
@@ -75,15 +80,18 @@ const CategoryDetails: React.FC = () => {
       </button>
 
       {isLoading ? (
+        // Show loading spinner while data is being fetched
         <div className={errorHandlingStyles.loading}>
           <img src={loading} alt={loading} />
         </div>
       ) : error || !productDetails ? (
+        // Show error message if there's an error or no product details found
         <div className={errorHandlingStyles.error}>
           <p>{error || "Product details not found."}</p>
           <img src={notFound} alt={notFound} />
         </div>
       ) : (
+        // Display product details when data is available
         <>
           <div className={styles.container}>
             <img src={productDetails.image} alt={productDetails.title} />

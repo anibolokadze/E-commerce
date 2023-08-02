@@ -33,7 +33,7 @@ export const fetchPopularProducts = async (): Promise<AxiosResponse<CategoryData
       
     return { ...response, data: filteredProducts };
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 };
 
@@ -42,7 +42,7 @@ export const fetchMenCategory = async (): Promise<AxiosResponse<CategoryData[]>>
     const response = await axios.get<CategoryData[]>('https://fakestoreapi.com/products/category/men\'s clothing');
     return response;
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 };
 
@@ -51,7 +51,7 @@ export const fetchWomenCategory = async (): Promise<AxiosResponse<CategoryData[]
     const response = await axios.get<CategoryData[]>('https://fakestoreapi.com/products/category/women\'s clothing');
     return response;
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 };
 
@@ -60,7 +60,7 @@ export const fetchJeweleryCategory = async (): Promise<AxiosResponse<CategoryDat
     const response = await axios.get<CategoryData[]>('https://fakestoreapi.com/products/category/jewelery');
     return response;
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 };
 
@@ -72,6 +72,6 @@ export const fetchProductDetails = async (productTitle: string): Promise<AxiosRe
       return { ...response, data: product };
     }
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 };

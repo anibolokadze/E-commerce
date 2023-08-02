@@ -14,6 +14,7 @@ const PopularProductList: React.FC = () => {
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
+    // Fetch popular products from API when the component mounts
     const fetchPopularProductsFromApi = async () => {
       try {
         const response = await fetchPopularProducts();
@@ -31,15 +32,18 @@ const PopularProductList: React.FC = () => {
   return (
     <>
       {isLoading ? (
+        // Show loading spinner while data is being fetched
         <div className={styles.loading}>
           <img src={loading} alt={loading} />
         </div>
       ) : error ? (
+        // Show error message if there's an error
         <div className={styles.error}>
           <p>{error}</p>
           <img src={notFound} alt={notFound} />
         </div>
       ) : (
+        // Display popular products when data is available
         <>
           <div className={styles.productWrapper}>
             <h1>
