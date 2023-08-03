@@ -4,6 +4,7 @@ export interface CategoryData {
   rating: {
     rate: number;
   };
+  id: any;
   description: string;
   category: string;
   title: string;
@@ -16,6 +17,7 @@ export interface ProductDetails {
   rating: {
     rate: number;
   };
+  id: any;
   description: string;
   category: string;
   title: string;
