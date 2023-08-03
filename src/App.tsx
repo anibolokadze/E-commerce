@@ -7,6 +7,8 @@ import MenCategory from "./pages/Men";
 import WomenCategory from "./pages/Women";
 import JeweleryCategory from "./pages/Jewelery";
 import CategoryDetails from "./pages/CategoryDetails";
+import ShoppingCart from "./pages/ShoppingCart";
+import Wishlist from "./pages/Wishlist";
 
 const App: React.FC = () => {
   return (
@@ -15,6 +17,8 @@ const App: React.FC = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/shopping-cart" element={<ShoppingCart />} />
+        <Route path="/Wishlist" element={<Wishlist />} />
         <Route
           path="/popular-products/:productTitle"
           element={<PopularProductDetailsPage />}

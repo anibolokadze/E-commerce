@@ -1,12 +1,12 @@
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 80px;
   padding: 0 50px;
+  column-gap: 50px;
     
   nav a {
-    margin: 0 16px;
     text-decoration: none;
     color: black;
     font-weight: 600;
@@ -40,23 +40,38 @@ header {
     font-size: 30px;
   }
 
-  img{
+  img, svg{
     width: 60px;
     &:hover{
       text-decoration: none !important;
     }
   }
 
-  .icons svg{
-    width: 25px;
-    height: 25px;
-    margin-left: 10px;
-
-    &:hover{
-      fill: #4169e1;
-      cursor: pointer;
+  .icons {
+    .link{
+      position: relative;
     }
-  } 
+    svg{
+      width: 30px;
+      height: 30px;
+      
+  
+      &:hover{
+        fill: #4169e1;
+        cursor: pointer;
+      }
+    }
+    div{
+      position: absolute;
+      top: 27px;
+      left: 18px;
+      background: rgb(188, 228, 252);
+      padding: 2px 7px;
+      border-radius: 50%;
+      font-size: 15px;
+      font-weight: 100;
+    }
+  }
   
 }
 
@@ -64,9 +79,13 @@ header div,
 nav {
   display: flex;
   align-items: center;
+  column-gap: 16px;
 }
 
 @media (max-width: 1024px) {
+  header{
+    justify-content: space-between;
+  }
   header .nav-btn {
     visibility: visible;
     opacity: 1;
