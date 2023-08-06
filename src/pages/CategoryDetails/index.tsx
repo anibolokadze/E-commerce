@@ -74,10 +74,10 @@ const CategoryDetails: React.FC = () => {
     });
 
     // Show a success message when the item is added to the cart
-    setMessage("Shopping cart has been updated");
+    setMessage("Added to shopping cart");
     setTimeout(() => {
       setMessage("");
-    }, 2000);
+    }, 1000);
   };
 
   return (
@@ -111,7 +111,9 @@ const CategoryDetails: React.FC = () => {
       ) : (
         // Display product details when data is available
         <>
-          {message && <div>{message}</div>}
+          {message && (
+            <div className={styles.shoppingCartMessage}>{message}</div>
+          )}
           <div className={styles.container}>
             <img src={productDetails.image} alt={productDetails.title} />
 

@@ -38,7 +38,11 @@ const Navbar: React.FC = () => {
 
         <div className={styles.icons}>
           {/* SVG paths */}
-          <Link to="shopping-cart" className={styles.link}>
+          <Link
+            to="shopping-cart"
+            className={styles.link}
+            onClick={closeNavbar}
+          >
             <svg
               fill="#000000"
               height="200px"

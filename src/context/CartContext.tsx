@@ -5,6 +5,7 @@ export interface CartItem {
   id: number;
   title: string;
   quantity: number;
+  img: string;
 }
 
 // context type
@@ -12,6 +13,8 @@ interface CartContextType {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (itemId: number) => void;
+  increaseQuantity: (itemId: number) => void;
+  decreaseQuantity: (itemId: number) => void;
 }
 
 // context
@@ -19,6 +22,8 @@ const CartContext = createContext<CartContextType>({
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
+  increaseQuantity: () => {},
+  decreaseQuantity: () => {},
 });
 
 // provider component
@@ -54,8 +59,42 @@ export const CartProvider: React.FC = ({ children }: any) => {
     );
   };
 
+  // Decrease quantity
+  const decreaseQuantity = (itemId: number) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === itemId && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      } else {
+        return null; // Remove the item from the cart
+      }
+    });
+
+    // Remove null items (items with quantity 0) from the updatedCartItems array
+    const filteredCartItems = updatedCartItems.filter((item) => item !== null);
+
+    setCartItems(filteredCartItems);
+  };
+
+  // Increase quantity
+  const increaseQuantity = (itemId: number) => {
+    addToCart({
+      id: itemId,
+      title: "",
+      quantity: 1,
+      img: "",
+    });
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        decreaseQuantity,
+        increaseQuantity,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
