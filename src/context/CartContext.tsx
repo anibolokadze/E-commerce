@@ -6,6 +6,7 @@ export interface CartItem {
   title: string;
   quantity: number;
   img: string;
+  price: number;
 }
 
 // context type
@@ -15,6 +16,7 @@ interface CartContextType {
   removeFromCart: (itemId: number) => void;
   increaseQuantity: (itemId: number) => void;
   decreaseQuantity: (itemId: number) => void;
+  calculateTotal: () => number;
 }
 
 // context
@@ -24,11 +26,18 @@ const CartContext = createContext<CartContextType>({
   removeFromCart: () => {},
   increaseQuantity: () => {},
   decreaseQuantity: () => {},
+  calculateTotal: () => {},
 });
 
 // provider component
 export const CartProvider: React.FC = ({ children }: any) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const calculateTotal = () => {
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  };
 
   // add items to the cart
   const addToCart = (item: CartItem) => {
@@ -62,10 +71,14 @@ export const CartProvider: React.FC = ({ children }: any) => {
   // Decrease quantity
   const decreaseQuantity = (itemId: number) => {
     const updatedCartItems = cartItems.map((item) => {
-      if (item.id === itemId && item.quantity > 1) {
-        return { ...item, quantity: item.quantity - 1 };
+      if (item.id === itemId) {
+        if (item.quantity > 1) {
+          return { ...item, quantity: item.quantity - 1 };
+        } else {
+          return null; // Remove the item from the cart
+        }
       } else {
-        return null; // Remove the item from the cart
+        return item;
       }
     });
 
@@ -82,6 +95,7 @@ export const CartProvider: React.FC = ({ children }: any) => {
       title: "",
       quantity: 1,
       img: "",
+      price: 1,
     });
   };
 
@@ -93,6 +107,7 @@ export const CartProvider: React.FC = ({ children }: any) => {
         removeFromCart,
         decreaseQuantity,
         increaseQuantity,
+        calculateTotal,
       }}
     >
       {children}

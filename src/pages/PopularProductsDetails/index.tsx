@@ -71,6 +71,7 @@ const ProductDetailsPage: React.FC = () => {
       title: product.title,
       quantity: productAmount,
       img: product.image,
+      price: product.price,
     });
 
     // Show a success message when the item is added to the cart

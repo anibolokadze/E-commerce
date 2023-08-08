@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import PopularProductDetailsPage from "./pages/PopularProductsDetails";
@@ -8,6 +7,7 @@ import WomenCategory from "./pages/Women";
 import JeweleryCategory from "./pages/Jewelery";
 import CategoryDetails from "./pages/CategoryDetails";
 import ShoppingCart from "./pages/ShoppingCart";
+import Payment from "./pages/Payment";
 import { CartProvider } from "./context/CartContext";
 
 const App: React.FC = () => {
@@ -29,6 +29,7 @@ const App: React.FC = () => {
           />
           <Route path="/women" element={<WomenCategory />} />
           <Route path="/jewelery" element={<JeweleryCategory />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </CartProvider>
     </Router>

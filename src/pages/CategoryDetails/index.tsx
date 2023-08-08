@@ -71,6 +71,8 @@ const CategoryDetails: React.FC = () => {
       id: productDetails.id,
       title: productDetails.title,
       quantity: productAmount,
+      img: productDetails?.image,
+      price: productDetails?.price,
     });
 
     // Show a success message when the item is added to the cart
