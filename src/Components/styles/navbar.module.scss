@@ -35,7 +35,7 @@ header {
   .nav-btn {
     padding: 5px;
     background: transparent;
-    visibility: hidden;
+    display: none;
     opacity: 0;
     font-size: 30px;
   }
@@ -87,7 +87,7 @@ nav {
     justify-content: space-between;
   }
   header .nav-btn {
-    visibility: visible;
+    display: block;
     opacity: 1;
   }
 
