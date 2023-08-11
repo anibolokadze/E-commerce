@@ -68,12 +68,15 @@ export const fetchJeweleryCategory = async (): Promise<AxiosResponse<CategoryDat
 
 export const fetchProductDetails = async (productTitle: string): Promise<AxiosResponse<ProductDetails>> => {
   try {
-    const response = await axios.get<ProductDetails>(`https://fakestoreapi.com/products`);
+    const response = await axios.get<ProductDetails[]>(`https://fakestoreapi.com/products`);
     const product = response.data.find((item) => item.title === productTitle);
     if (product) {
       return { ...response, data: product };
+    } else {
+      throw new Error("Product not found");
     }
   } catch (error) {
     throw error;
   }
 };
+

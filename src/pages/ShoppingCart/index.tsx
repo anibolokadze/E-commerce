@@ -17,7 +17,7 @@ const ShoppingCart: React.FC = () => {
     removeFromCart(itemId);
   };
 
-  const totalAmount = calculateTotal();
+  const totalAmount = calculateTotal().toFixed(2);
 
   return (
     <>
@@ -60,11 +60,11 @@ const ShoppingCart: React.FC = () => {
           </ul>
         )}
         <div className={styles.total}>
-          <h1>Total: ${calculateTotal()}</h1>
+          <h1>Total: ${calculateTotal().toFixed(2)}</h1>
         </div>
 
         {/* Conditionally render the CONFIRM ORDER button */}
-        {totalAmount > 0 && (
+        {totalAmount > "0.00" && (
           <Link to="/payment">
             <button className={styles.confirmOrder}>CONFIRM ORDER</button>
           </Link>

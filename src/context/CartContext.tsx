@@ -1,4 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { ReactNode, createContext, useContext, useState } from "react";
+
+interface CartProviderProps {
+  children: ReactNode;
+}
 
 // cart item type
 export interface CartItem {
@@ -16,8 +20,8 @@ interface CartContextType {
   removeFromCart: (itemId: number) => void;
   increaseQuantity: (itemId: number) => void;
   decreaseQuantity: (itemId: number) => void;
-  calculateTotal: (itemId: number) => void;
-  clearCart: (itemId: number) => void;
+  calculateTotal: () => number;
+  clearCart: () => void;
 }
 
 // context
@@ -27,18 +31,20 @@ const CartContext = createContext<CartContextType>({
   removeFromCart: () => {},
   increaseQuantity: () => {},
   decreaseQuantity: () => {},
-  calculateTotal: () => {},
+  calculateTotal: () => 0,
   clearCart: () => {},
 });
 
 // provider component
-export const CartProvider: React.FC = ({ children }: any) => {
+export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
   const calculateTotal = () => {
-    return cartItems.reduce(
+    const total = cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
       0
     );
+    return total;
   };
 
   // add items to the cart
@@ -85,7 +91,9 @@ export const CartProvider: React.FC = ({ children }: any) => {
     });
 
     // Remove null items (items with quantity 0) from the updatedCartItems array
-    const filteredCartItems = updatedCartItems.filter((item) => item !== null);
+    const filteredCartItems = updatedCartItems.filter(
+      (item) => item !== null
+    ) as CartItem[];
 
     setCartItems(filteredCartItems);
   };

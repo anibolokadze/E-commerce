@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { PopularProduct, fetchPopularProducts } from "../../../api";
+import { CategoryData, fetchPopularProducts } from "../../../api";
 import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,7 +17,7 @@ interface SimilarProductsProps {
 const SimilarProducts: React.FC<SimilarProductsProps> = ({
   excludeProductTitle,
 }) => {
-  const [popularProducts, setPopularProducts] = useState<PopularProduct[]>([]);
+  const [popularProducts, setPopularProducts] = useState<CategoryData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>("");
   const sliderRef = useRef<Slider>(null);

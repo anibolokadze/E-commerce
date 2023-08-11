@@ -8,7 +8,7 @@ import errorHandlingStyles from "../Home/PopularProducts/popularProducts.module.
 import { useCart } from "../../context/CartContext";
 
 const CategoryDetails: React.FC = () => {
-  const { productTitle } = useParams<{ productTitle: string }>();
+  const { productTitle = "" } = useParams<{ productTitle?: string }>();
   const { addToCart } = useCart(); // Access the cart items and addToCart function from the context
   const navigate = useNavigate();
 
@@ -68,11 +68,11 @@ const CategoryDetails: React.FC = () => {
   const addToCartWithQuantity = () => {
     // Add the product to the cart with the specified quantity
     addToCart({
-      id: productDetails.id,
-      title: productDetails.title,
+      id: productDetails!.id,
+      title: productDetails!.title,
       quantity: productAmount,
-      img: productDetails?.image,
-      price: productDetails?.price,
+      img: productDetails!.image,
+      price: Number(productDetails!.price),
     });
 
     // Show a success message when the item is added to the cart

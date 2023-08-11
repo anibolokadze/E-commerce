@@ -24,7 +24,9 @@ const CartValidation: React.FC = () => {
   const { clearCart } = useCart();
 
   // Form is submitted
-  const onSubmit = () => setIsPaymentSuccessful(true);
+  const onSubmit = () => {
+    setIsPaymentSuccessful(true);
+  };
 
   // Format card number with spaces and limit length to 19 characters
   const formatCardNumber = (value: string): string =>

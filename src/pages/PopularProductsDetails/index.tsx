@@ -12,7 +12,7 @@ const ProductDetailsPage: React.FC = () => {
   const { productTitle } = useParams<{ productTitle: string }>();
   const { addToCart } = useCart(); // Access the cart items and addToCart function from the context
 
-  const [product, setProduct] = useState<CategoryData>(null);
+  const [product, setProduct] = useState<CategoryData>({} as CategoryData);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>("");
   const [message, setMessage] = useState<string>("");
@@ -65,13 +65,17 @@ const ProductDetailsPage: React.FC = () => {
   };
 
   const addToCartWithQuantity = () => {
+    // Convert product.price to a number if it's a string
+    const price =
+      typeof product.price === "string" ? Number(product.price) : product.price;
+
     // Add the product to the cart with the specified quantity
     addToCart({
       id: product.id,
       title: product.title,
       quantity: productAmount,
       img: product.image,
-      price: product.price,
+      price: price,
     });
 
     // Show a success message when the item is added to the cart
