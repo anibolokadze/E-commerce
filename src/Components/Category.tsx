@@ -51,7 +51,7 @@ const CategoryPage: React.FC<CategoryProps> = ({
 
         // Calculate the min and max prices from the fetched data
         const prices = response.data.map((product) =>
-          parseFloat(product.price)
+          parseFloat(product.price.toString())
         );
         setMinPrice(Math.min(...prices));
         setMaxPrice(Math.max(...prices));
@@ -81,7 +81,8 @@ const CategoryPage: React.FC<CategoryProps> = ({
     // Filter the data by price
     const filteredData = categoryData.filter(
       (product) =>
-        parseFloat(product.price) >= min && parseFloat(product.price) <= max
+        parseFloat(product.price.toString()) >= min &&
+        parseFloat(product.price.toString()) <= max
     );
 
     if (filteredData.length === 0) {

@@ -21,7 +21,7 @@ const Filter: React.FC<FilterProps> = ({
 
   // Handle price range filtering
   const handleFilter = (values: number[]) => {
-    setValues(values);
+    setValues(() => [values[0], values[1]]);
     onFilter(values[0], values[1]);
   };
 
