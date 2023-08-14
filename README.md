@@ -25,7 +25,7 @@ Please note that I'm not a designer by profession, so the focus here is on demon
 - SCSS/Sass: Enhanced CSS styling.
 
 
-🌎 Live site URL: https://e-commerce-anibolokadze.vercel.app/ <br>
+🌎 Live site URL: https://e-commerce-anibolokadze.vercel.app/  <br>
 👩‍💻 LinkedIn: https://www.linkedin.com/in/ani-bolokadze-34b872252/
 
 
